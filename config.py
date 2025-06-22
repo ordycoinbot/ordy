@@ -1,6 +1,5 @@
 TOKEN = '7646360181:AAFGYyYrJ51G3YLbBbGFhA2418puiDspXQI'
 
-db_config = {
    import os
 
 db_config = {
