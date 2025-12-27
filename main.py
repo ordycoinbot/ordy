@@ -9,8 +9,8 @@ from config import TOKEN, db_config
 bot = telebot.TeleBot(TOKEN)
 bot.delete_webhook()
 
-GROUP_CHAT_ID   = -1002311873284
-TWITTER_HANDLE  = "OrdinarySORDY"
+GROUP_CHAT_ID   = -1
+TWITTER_HANDLE  = ""
 AIRDROP_TOTAL   = 250_000_000  # Ukupno tokena za airdrop
 
 def connect_db():
@@ -127,7 +127,7 @@ def register_user(user_id, username, ref_id):
     db.close()
 
 ########################################
-#       Dugme: My Referral Link
+#       Buton: My Referral Link
 ########################################
 @bot.message_handler(func=lambda m: m.text == "👥 My Referral Link")
 def ref_link(m):
@@ -135,7 +135,7 @@ def ref_link(m):
     bot.send_message(m.chat.id, f"👥 Your referral link:\n{link}\n\n🔁 Earn 500 $ORDY per invite")
 
 ########################################
-#       Dugme: Submit Wallet
+#       Buton: Submit Wallet
 ########################################
 @bot.message_handler(func=lambda m: m.text == "💼 Submit Wallet")
 def ask_wallet(m):
@@ -156,7 +156,7 @@ def save_wallet(m):
     bot.send_message(m.chat.id, "✅ Wallet saved successfully!")
 
 ########################################
-#       Dugme: Status
+#       Buton: Status
 ########################################
 @bot.message_handler(func=lambda m: m.text == "📊 Status")
 def status(m):
@@ -178,7 +178,7 @@ def status(m):
     )
 
 ########################################
-#       Dugme: Claim
+#       Buton: Claim
 ########################################
 @bot.message_handler(func=lambda m: m.text == "🎁 Claim")
 def claim(m):
@@ -201,7 +201,7 @@ def claim(m):
     db.close()
 
 ########################################
-#   Dugme ili komanda: Airdrop Status
+#   Buton: Airdrop Status
 ########################################
 @bot.message_handler(commands=['airdrop'])
 @bot.message_handler(func=lambda m: m.text == "📉 Airdrop Status")
