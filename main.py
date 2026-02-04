@@ -1,4 +1,4 @@
-# main.py — ORDY Telegram Bot (Railway / Polling, table: ordy)
+# main.py — ORDY Telegram Bot (Railway / Polling, table: users)
 
 import telebot
 from telebot import types
@@ -19,7 +19,7 @@ def create_user_if_not_exists(user_id, username, ref_id=None):
     with conn.cursor() as cur:
         cur.execute(
             """
-            INSERT IGNORE INTO ordy (user_id, username, ref_id)
+            INSERT IGNORE INTO users (user_id, username, ref_id)
             VALUES (%s, %s, %s)
             """,
             (user_id, username or "", ref_id)
@@ -30,7 +30,7 @@ def set_wallet(user_id, wallet):
     conn = get_conn()
     with conn.cursor() as cur:
         cur.execute(
-            "UPDATE ordy SET wallet=%s WHERE user_id=%s",
+            "UPDATE users SET wallet=%s WHERE user_id=%s",
             (wallet, user_id)
         )
     conn.close()
@@ -39,7 +39,7 @@ def is_wallet_used(wallet):
     conn = get_conn()
     with conn.cursor() as cur:
         cur.execute(
-            "SELECT user_id FROM ordy WHERE wallet=%s",
+            "SELECT user_id FROM users WHERE wallet=%s",
             (wallet,)
         )
         row = cur.fetchone()
@@ -50,7 +50,7 @@ def count_referrals(user_id):
     conn = get_conn()
     with conn.cursor() as cur:
         cur.execute(
-            "SELECT COUNT(*) FROM ordy WHERE ref_id=%s",
+            "SELECT COUNT(*) FROM users WHERE ref_id=%s",
             (user_id,)
         )
         count = cur.fetchone()[0]
@@ -132,3 +132,4 @@ if __name__ == "__main__":
     print("🚀 ORDY Bot running (Railway polling)")
     bot.delete_webhook(drop_pending_updates=True)
     bot.infinity_polling(timeout=60, long_polling_timeout=60)
+
