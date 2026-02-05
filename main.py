@@ -125,10 +125,12 @@ def callbacks(call):
     bot.answer_callback_query(call.id)
 
     if call.data == "connect_wallet":
+
         msg = bot.send_message(call.message.chat.id, "Send your TON wallet:")
         bot.register_next_step_handler(msg, save_wallet)
 
     elif call.data == "dashboard":
+
         refs = get_ref_count(user_id)
         total = JOIN_REWARD + refs * REF_REWARD
 
@@ -138,11 +140,11 @@ def callbacks(call):
         )
 
     elif call.data == "check_status":
+
         bot.send_message(call.message.chat.id, "🎯 Tasks completed ✔")
 
-    elif call.data
+    elif call.data == "claim":
 
-== "claim":
         refs = get_ref_count(user_id)
 
         if refs < 50:
