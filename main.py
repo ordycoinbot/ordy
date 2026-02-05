@@ -4,7 +4,11 @@ import telebot
 from telebot import types
 from config import TOKEN, JOIN_REWARD, REF_REWARD, TWITTER_HANDLE
 from db import get_conn
-
+def init_db():
+    conn = get_conn()
+    with conn.cursor() as cur:
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS users (
 print("🔧 ORDY bot is starting...")
 
 # ========== BOT ==========
