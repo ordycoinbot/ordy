@@ -142,7 +142,6 @@ def callbacks(call):
 
     elif call.data
 
-RaJa (OldSeed Hunters), [5. 2. 2026. 13:08]
 == "claim":
         refs = get_ref_count(user_id)
 
