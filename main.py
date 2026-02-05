@@ -1,4 +1,3 @@
-RaJa (OldSeed Hunters), [5. 2. 2026. 13:08]
 print("🔧 ORDY bot is starting...")
 
 import telebot
