@@ -3,7 +3,7 @@
 import os
 
 # ========== TELEGRAM ==========
-TOKEN = os.getenv("BOT_TOKEN")
+TOKEN = os.getenv("TOKEN")
 
 JOIN_REWARD = int(os.getenv("JOIN_REWARD", 1000))
 REF_REWARD = int(os.getenv("REF_REWARD", 500))
